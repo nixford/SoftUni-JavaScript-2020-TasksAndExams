@@ -83,3 +83,45 @@ let undefined2 = null;
 console.log(Number('4'));
 // console.log(+'4'));
 
+
+// First-class Functions
+let sum = (a, b) => a+b;
+
+function calculate(operation, firstArgument, secondArgument){
+    let operationResult = operation(firstArgument, secondArgument);
+
+    return operationResult;
+}
+
+let resultNestedFunction = calculate(sum, 5, 10);
+
+console.log(resultNestedFunction);
+
+
+// Arrays
+// let numArrayEmpty = [];
+
+// let numArray = [10,1,4,1,5];
+
+// console.log(numArray);
+
+
+// For numbers
+let numbers = [30,3,2,5,4,1,10,20];
+function compareNumbers(a, b) {
+    return a - b;
+}
+
+numbers.sort(compareNumbers);
+console.log(numbers);
+
+// For string
+let names = ['Gosho', 'Pesho', 'Stamat', 'Gery', 'Ani'];
+
+names.sort(function(a,b) {
+    return a.localeCompare(b);
+});
+
+names.sort((a, b) => a.localeCompare(b));
+
+console.log(names);
