@@ -263,5 +263,211 @@ function ticTacToe(matrix) {
     }    
 }
 
+// function solve(input) {
+//     let arr = [
+//         [false, false, false],
+//         [false, false, false],
+//         [false, false, false]
+//     ];
+//     let player = 'X';
+ 
+//     for (let line of input) {
+//         [currRow, currCol] = line.split(' ').map(Number);
+ 
+//         if (arr[currRow][currCol] !== false) {
+//             console.log('This place is already taken. Please choose another!');
+//             continue;
+//         }
+ 
+//         arr[currRow][currCol] = player;
+ 
+//         //check horizontal and vertical
+//         for (let i = 0; i < 3; i++) {
+//             if (
+//                 arr[i][0] === player &&
+//                 arr[i][1] === player &&
+//                 arr[i][2] === player
+//             ) {
+//                 console.log(`Player ${player} wins!`);
+//                 printMatrix();
+//                 return;
+//             } else if (
+//                 arr[0][i] === player &&
+//                 arr[1][i] === player &&
+//                 arr[2][i] === player
+//             ) {
+//                 console.log(`Player ${player} wins!`);
+//                 printMatrix();
+//                 return;
+//             }
+//         }
+ 
+//         //check left to right
+//         if (
+//             arr[0][0] === player &&
+//             arr[1][1] === player &&
+//             arr[2][2] === player
+//         ) {
+//             console.log(`Player ${player} wins!`);
+//             printMatrix();
+//             return;
+//         }
+ 
+//         //check right to left
+//         else if (
+//             arr[0][2] === player &&
+//             arr[1][1] === player &&
+//             arr[2][0] === player
+//         ) {
+//             console.log(`Player ${player} wins!`);
+//             printMatrix();
+//             return;
+//         }
+ 
+//         let theresFalse = false;
+ 
+//         for (let row = 0; row < arr.length; row++) {
+//             if (arr[row].includes(false)) {
+//                 theresFalse = true;
+//             }
+//         }
+ 
+//         if (!theresFalse) {
+//             console.log('The game ended! Nobody wins :(');
+//             printMatrix();
+//             return;
+//         }
+ 
+//         player = player === 'X' ? 'O' : 'X';
+//     }
+ 
+//     function printMatrix() {
+//         for (let row = 0; row < arr.length; row++) {
+//             console.log(arr[row].join('\t'));
+//         }
+//     }
+// }
 
+
+// 
+
+
+// 09. Diagonal Attack
+
+function diagonalAttack(array) {
+    let matrix = fillMatrix(array);
+    let firstDiagonal = 0;
+    let secondDiagonal = 0;
+
+    for (let row = 0; row < matrix.length; row++) {
+        firstDiagonal += matrix[row][row];
+        secondDiagonal += matrix[row][matrix.length - 1 - row]
+    }
+
+    if (firstDiagonal === secondDiagonal) {
+        for (let row = 0; row < matrix.length; row++) {
+            for (let col = 0; col < matrix[row].length; col++) {
+                if (row !== col && col !== matrix.length - 1 - row) {
+                    matrix[row][col] = firstDiagonal;
+                }                
+            }            
+        }
+    }
+
+    for (let row of matrix) {
+        console.log(row.join(' '));
+    }
+
+    function fillMatrix(array) {
+        let matrix = [];
+        for (let item of array) {
+            let row = item.split(' ').map(x => Number(x));
+            matrix.push(row);
+        }
+
+        return matrix;
+    }
+}
+
+
+// 10. Orbit
+
+function orbit(input) {
+    let rows = input[0], cols = input[1], x = input[2], y = input[3];
+    let matrix = fillMatrix(rows);
+
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            matrix[row][col] = Math.max(Math.abs(row - x), Math.abs(col - y)) + 1;
+        }
+    }
+    printMatrix(matrix);
+
+    function fillMatrix(rows) {
+        let matrix = [];
+        for (let row = 0; row < rows; row++) {
+            matrix.push([]);
+        }
+        return matrix;
+    }
+
+    function printMatrix(matrix) {
+        for (let line of matrix) {
+            console.log(line.join(" "));
+        }
+    }
+}
+
+
+// 11. Spiral Matrix
+
+function spiralMatrix(rows, cols) {
+    let matrix = fillMatrix(rows);
+
+    let number = 1;
+    let startRow = 0;
+    let endRow = rows - 1;
+    let startCol = 0;
+    let endCol = cols - 1;
+
+    while (startRow <= endRow || startCol <= endCol) {
+        for (let i = startRow; i <= endRow; i++) {
+            matrix[startRow][i] = number;
+            number++;
+        }
+
+        for (let i = startRow + 1; i <= endRow; i++) {
+            matrix[i][endCol] = number;
+            number++;
+        }
+
+        for (let i = endCol - 1; i >= startCol; i--) {
+            matrix[endRow][i] = number;
+            number++;
+        }
+
+        for (let i = endRow - 1; i > startRow; i--) {
+            matrix[i][startCol] = number;
+            number++;
+        }
+
+        startRow++;
+        endRow--;
+        startCol++;
+        endCol--;
+    }
+
+    for (let row of matrix) {
+        console.log(row.join(' '));
+    }
+
+    function fillMatrix(rows) {
+        let matrix = [];
+        for (let row = 0; row < rows; row++) {
+            matrix.push([]);
+        }
+
+        return matrix;
+    }
+}
 
