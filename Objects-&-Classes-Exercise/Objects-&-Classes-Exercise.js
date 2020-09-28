@@ -262,12 +262,40 @@ class SortedList {
     }
 }
 
-let sortedList = new SortedList();
-sortedList.add(5);
-sortedList.add(2);
-sortedList.add(1);
 
-sortedList.remove(2);
-console.log(sortedList.get(1));
-console.log(sortedList.size);
+// 10. Length Limit
+
+class Stringer {
+    constructor(innerString, innerLength) {
+        this.innerString = innerString;
+        this.innerLength = innerLength;
+    }
+
+    increase(length) {
+        this.innerLength += length;
+        if (this.innerLength < 3) {
+            this.innerLength = 0;
+        }
+    }
+
+    decrease(length) {
+        this.innerLength -= length;
+        if (this.innerLength < 3) {
+            this.innerLength = 0;
+        }
+    }
+
+    toString() {
+        if (this.innerLength === 0) {
+            return '...';
+        }
+
+        if (this.innerString.length > this.innerLength) {
+            this.innerString = `${this.innerString.substr(0, this.innerLength)}...`;
+        }
+
+        return this.innerString;
+    }
+}
+
 
