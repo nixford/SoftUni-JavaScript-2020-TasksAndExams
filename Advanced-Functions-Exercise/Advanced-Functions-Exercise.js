@@ -264,3 +264,9 @@ let monkeyPatcher = (function () {
 })();
 
 
+let names = ['Pesho', 'Ivan', 'Mariya'];
+
+let [firstName, secondName] = names;
+
+console.log(firstName);
+console.log(secondName);
