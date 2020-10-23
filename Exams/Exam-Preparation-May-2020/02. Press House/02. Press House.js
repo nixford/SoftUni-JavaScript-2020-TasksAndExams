@@ -1,15 +1,15 @@
-function pressHouse(){
+function solve(){
 
     class Article{
         constructor(title, content){
-            this.title = title,
-            this.content = content
+            this.title = title;
+            this.content = content;
         }
 
         toString(){
             return [
-                `Title: ${this.title},
-                Content: ${this.content}`
+                `Title: ${this.title}`,
+                `Content: ${this.content}`
             ].join('\n');
         }
     }
@@ -24,8 +24,8 @@ function pressHouse(){
                 throw new Error("The original research should have author and title.");
             }
 
-            super(title, content),
-            this.originalResearchs = originalResearch,
+            super(title, content);
+            this.originalResearchs = originalResearch;
             this.comments = [];           
         }
 
@@ -46,15 +46,13 @@ function pressHouse(){
             return "The comment is added.";
         }
 
-        toString(){
-            const result = [
-                super.toString(),
-                `Original Research: ${this.originalResearchs.title} by ${this.originalResearchs.author}`
-            ].join('\n');
-
+        toString(){     
+            let result = super.toString();
+            result += `\nOriginal Research: ${this.originalResearchs.title} by ${this.originalResearchs.author}`;
+ 
             if (this.comments.length > 0) {
-                result.push('Comments:');
-                this.comments.forEach(c => result.push(c));
+                result += '\nComments:\n';                
+                result += this.comments.join(`\n`);            
             }
 
             return result;
@@ -63,9 +61,9 @@ function pressHouse(){
 
     class BookReview extends Article{
         constructor(title, content, book){
-            super(title, content),
-            this.book = book,
-            this.clients = []
+            super(title, content);
+            this.book = book;
+            this.clients = [];
         }
 
         addClient(clientName,  orderDescription){
@@ -75,7 +73,7 @@ function pressHouse(){
             } else {
                 this.clients.push({
                     clientName,
-                    orderDescription
+                    orderDescription,
                 });
 
                 return `${clientName} has ordered a review for ${this.title}`;
@@ -83,14 +81,12 @@ function pressHouse(){
         }
 
         toString() {
-            const result = [
-                super.toString(),
-                `Book: ${this.book.name}`
-            ].join('\n');
+            let result = super.toString();
+            result += `\nBook: ${this.book.name}\n`;
 
             if (this.clients.length > 0) {
-                result.push('Orders:');
-                this.clients.forEach(c => result.push(`${c.clientName} - ${c.orderDescription}`));
+                result += '\nOrders:\n';
+                this.clients.forEach(c => result += `${c.clientName} - ${c.orderDescription}\n`);
             }
 
             return result;
@@ -103,7 +99,7 @@ function pressHouse(){
     }
 }
 
-let classes = pressHouse();
+let classes = solve();
 let lorem = new classes.Article("Lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non tortor finibus, facilisis mauris vel…");
 console.log(lorem.toString()); 
 
