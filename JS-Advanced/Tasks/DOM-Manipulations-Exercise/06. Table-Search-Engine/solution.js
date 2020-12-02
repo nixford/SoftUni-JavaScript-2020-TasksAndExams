@@ -6,7 +6,7 @@ function solve() {
          Array.from(document.querySelectorAll('tbody > tr')).forEach(row => { 
             // returns all tr in tbody as an array
             if (row.textContent.includes(word.value) && word.value != "") {
-               row.classList.add('select');
+               row.classList.remove('tr');
             } else {
                row.classList.remove('select');
             }
