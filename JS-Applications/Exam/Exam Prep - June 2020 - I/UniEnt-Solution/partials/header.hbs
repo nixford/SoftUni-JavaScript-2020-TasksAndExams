@@ -10,19 +10,13 @@
             d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94">
           </path>
         </svg>
-      </a>
-      {{#if isAuth}}
-      <a class="py-2 d-none d-md-inline-block" href="#/create">Organize Event</a>
-      <a class="py-2 d-none d-md-inline-block" href="#/profile">{{user}}</a>
+      </a>      
+      {{#if isLoggedIn}}      
+      <a class="py-2 d-none d-md-inline-block" href="#/organize">Organize Event</a>
+      <a class="py-2 d-none d-md-inline-block" href="#/profile">{{ username }}</a>
       <a class="py-2 d-none d-md-inline-block" href="#/logout">Logout</a>
       {{else}}
-      <a class="py-2 d-none d-md-inline-block" href="#/login">Login</a>      
+      <a class="py-2 d-none d-md-inline-block" href="#/login">Login</a>
       {{/if}}
     </div>
   </nav>
-
-  <div id="notifications">
-      <div id="successBox" class="alert alert-success" role="alert">{Success Message...}</div>
-      <div id="loadingBox" class="alert alert-info" role="alert">Loading...</div>
-      <div id="errorBox" class="alert alert-danger" role="alert">{Error Message...}</div>
-  </div>
