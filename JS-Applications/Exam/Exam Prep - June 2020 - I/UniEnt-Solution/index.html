@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>UniEnt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+
+<body>
+  <div id="notifications">
+    <div id="successBox" class="alert alert-success" role="alert">{Success Message...}</div>
+    <div id="loadingBox" class="alert alert-info" role="alert">Loading...</div>
+    <div id="errorBox" class="alert alert-danger" role="alert">{Error Message...}</div>
+  </div>
+
+  <main id="root"></main>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCKGZgEJ3MBhks310LL3R0aXsDW0BMzr6s",
+      authDomain: "unient-a3421.firebaseapp.com",
+      databaseURL: "https://unient-a3421-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "unient-a3421",
+      storageBucket: "unient-a3421.appspot.com",
+      messagingSenderId: "863341545870",
+      appId: "1:863341545870:web:97a9bad708501bade37cdf"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="../node_modules/sammy/lib/sammy.js"></script>
+  <script src="../node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+
+  <script src="./index.js"></script>
+
+</body>
+
+</html>
