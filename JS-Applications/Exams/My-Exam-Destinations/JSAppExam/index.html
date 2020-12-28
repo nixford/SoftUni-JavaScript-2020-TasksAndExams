@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Destinations</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Notifications -->
+    <div>
+        <div class="notification loadingBox">
+            Loading …
+        </div>
+        <div id="successBox" class="notification infoBox">
+            Info
+        </div>
+        <div id="errorBox" class="notification errorBox">
+            Error: destination name can't be empty!
+        </div>
+    </div>
+
+    <div id="container">
+
+
+        <main id="root"></main>
+
+    </div>
+
+    
+
+
+
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA_vRnZxO26qBzifLzBX1TanbhE_xp8MMY",
+            authDomain: "js-applications-57b75.firebaseapp.com",
+            databaseURL: "https://js-applications-57b75-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "js-applications-57b75",
+            storageBucket: "js-applications-57b75.appspot.com",
+            messagingSenderId: "552299583971",
+            appId: "1:552299583971:web:e698aef3f833c2599b68d6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+    <!-- Modules -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../node_modules/sammy/lib/sammy.js"></script>    
+    <script src="../node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+
+
+
+    <!-- Scripts -->
+    <script src="./index.js" type="module"></script>
+
+</body>
+
+</html>
