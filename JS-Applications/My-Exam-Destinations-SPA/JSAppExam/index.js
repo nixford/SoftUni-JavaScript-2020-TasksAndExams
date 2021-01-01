@@ -233,11 +233,7 @@ const app = Sammy('#root', function () {
                 this.redirect(`#/details/${destinationId}`)
             })
             .catch(errorHandler)
-    })
-
-
-
-    
+    })    
 });
 
 (() => {

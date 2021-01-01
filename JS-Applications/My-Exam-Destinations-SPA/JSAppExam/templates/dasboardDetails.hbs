@@ -6,13 +6,11 @@
     {{#each destinations}}
     <div class="destination-ticket">
         <div class="destination-left">
-            <img src="{{ imgUrl }}"
-                alt="">
+            <img src="{{ imgUrl }}" alt="">
         </div>
-        {
         <div class="destination-right">
             <div>
-                <h3>{{this.destination}}</h3><span>{{this.suration}}</span>
+                <h3>{{this.destination}}</h3><span>{{this.departureDate}}</span>
             </div>
             <div>
                 to {{this.city}}
