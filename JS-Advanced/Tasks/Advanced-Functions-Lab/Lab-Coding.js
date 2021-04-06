@@ -59,6 +59,11 @@ let isValidName = function(name) {
 	return false;
 }
 
+// Same as
+let isValidName = function(name) {
+	return name.split(' ').length == 2;
+}
+
 console.log(isValidName('Ivan Ivanov'));
 console.log(isValidName('Ivan Ivanov Petrov'));
 console.log(isValidName('Pesho'));
