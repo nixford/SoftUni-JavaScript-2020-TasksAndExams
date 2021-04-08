@@ -77,9 +77,9 @@ let names = [
 
 // Can be used, as follows
 let filteredNames = names.filter(isValidName);
-// Also
+Also
 let filteredNamesTwo = names.filter(name => name.split(' ').length == 2);
-// Also
+Also
 let filteredNamesThree = names.filter(x => isValidName(x)); // not necessery extention of the code
 
 console.log(filteredNames);
@@ -101,9 +101,52 @@ console.log(impureFunction('Pesho'));
 let mult = (a, b) => {
 	return a * b;
 }
-
 // Whithout referential transperancy
 let mult = (a, b) => {
 	console.log(a)
 	return a * b;
 }
+
+
+// FUNCTIONAL DECOMPOSITION TECHNIQUE
+// Normal function
+let sum3 = (a, b, c) => {
+	return a + b + c;
+}; 
+// Decompostion function
+let sum3Decomposition = function(a) {
+	return function(b) {
+		return function(c) {
+			return a + b + c;
+		}
+	}
+}
+
+console.log(sum3(1, 2, 3));
+// Same as
+console.log(sum3Decomposition(1)(2)(3));
+
+// Example for decomposition of the nested functions
+let sum3Decomposition = function(a) {
+	return function(b) {
+		return function(c) {
+			return a + b + c;
+		}
+	}
+}
+
+// Same as (it is used in REACT):
+let sum3Decomposition = (a) => (b) => (c) => {
+	return a + b + c;
+}
+
+// Returns the function(b)
+let sum3b = sum3Decomposition(1);
+
+// Returns the function(c)
+let sum3c = sum3b(2);
+
+// Returns the expression in function(c)
+let result = sum3c(3);
+
+console.log(result)
