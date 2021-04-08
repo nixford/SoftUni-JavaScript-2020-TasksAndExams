@@ -1,5 +1,4 @@
 // FIRST CLASS / HIGHER-ORDER FUNCTIONS
-
 function add(a, b) { 
 	return a + b;
 }
@@ -30,7 +29,7 @@ console.log(product)
 console.log(multiply)
 
 
-// Return function
+// RETURN FUNCTIONS
 function getOperation() {
 	return function(a, b) {
 		return a + b;
@@ -47,7 +46,6 @@ function getOperation() {
 
 // Operation is a function and it can be executed with providing numbers
 let operation = getOperation();
-
 console.log(operation(10, 20))
 
 
@@ -66,10 +64,9 @@ let isValidName = name => {
 
 // Same as
 let isValidName = name => name.split(' ').length == 2;
-
-// console.log(isValidName('Ivan Ivanov'));
-// console.log(isValidName('Ivan Ivanov Petrov'));
-// console.log(isValidName('Pesho'));
+console.log(isValidName('Ivan Ivanov'));
+console.log(isValidName('Ivan Ivanov Petrov'));
+console.log(isValidName('Pesho'));
 
 let names = [
 	'Pesho',
@@ -80,9 +77,9 @@ let names = [
 
 // Can be used, as follows
 let filteredNames = names.filter(isValidName);
-Also
+// Also
 let filteredNamesTwo = names.filter(name => name.split(' ').length == 2);
-Also
+// Also
 let filteredNamesThree = names.filter(x => isValidName(x)); // not necessery extention of the code
 
 console.log(filteredNames);
@@ -98,3 +95,15 @@ let impureFunction = function(text) {
 	return new Date() + text;
 }
 console.log(impureFunction('Pesho'));
+
+
+// REFERENTIAL TRANSPERANCY
+let mult = (a, b) => {
+	return a * b;
+}
+
+// Whithout referential transperancy
+let mult = (a, b) => {
+	console.log(a)
+	return a * b;
+}
