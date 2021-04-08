@@ -135,6 +135,15 @@ let sum3Decomposition = function(a) {
 	}
 }
 
+// Same as
+let sum3Decomposition = (a) => {
+	return (b) => {
+		return (c) => {
+			return a + b + c;
+		}
+	}
+}
+
 // Same as (it is used in REACT):
 let sum3Decomposition = (a) => (b) => (c) => {
 	return a + b + c;
