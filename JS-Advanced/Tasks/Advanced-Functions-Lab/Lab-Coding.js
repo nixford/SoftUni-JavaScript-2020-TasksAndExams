@@ -162,17 +162,37 @@
 
 
 // // PARTIAL APPLICATION
-let pow = (power, x) => {
-	return x ** power;
-}
+// let pow = (power, x) => {
+// 	return x ** power;
+// }
 
 // Bind the power
-let sqr = pow.bind(null, 2);
+// let sqr = pow.bind(null, 2);
 
-console.log(pow(2,2));
-console.log(pow(2,4));
-console.log(pow(2,6));
 
-console.log(sqr(2));
-console.log(sqr(4));
-console.log(sqr(6));
+// console.log(pow(2,2));
+// console.log(pow(2,4));
+// console.log(pow(2,6));
+
+// console.log(sqr(2));
+// console.log(sqr(4));
+// console.log(sqr(6));
+
+// IIFE - Immediately-Invoked Function Expressions
+// Execution of normal function
+let value = (function() {
+	return 2 * 10 + 15 + 'Pesho';
+});
+console.log(value()); // // Value is function and must be executed with '()'
+
+// Execution of IIFE
+let value = (function() {
+	return 2 * 10 + 15 + 'Pesho';
+})(); // // Immediately invoking the function wiht () and saving the result in the variable 'value'
+console.log(value); // // Value is NOT function and '()' are not needed.
+
+// // Another example of IIFE - returns directly the result
+(function() {
+	console.log('some app here');
+	console.log('some app here');
+})();
