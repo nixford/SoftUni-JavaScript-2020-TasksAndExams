@@ -178,21 +178,35 @@
 // console.log(sqr(4));
 // console.log(sqr(6));
 
-// IIFE - Immediately-Invoked Function Expressions
-// Execution of normal function
-let value = (function() {
-	return 2 * 10 + 15 + 'Pesho';
-});
-console.log(value()); // // Value is function and must be executed with '()'
+// // IIFE - IMMEDIATELY-INVOKED FUNCTION EXPRESSIONS
+// // Execution of normal function
+// let value = (function() {
+// 	return 2 * 10 + 15 + 'Pesho';
+// });
+// console.log(value()); // // Value is function and must be executed with '()'
 
-// Execution of IIFE
-let value = (function() {
-	return 2 * 10 + 15 + 'Pesho';
-})(); // // Immediately invoking the function wiht () and saving the result in the variable 'value'
-console.log(value); // // Value is NOT function and '()' are not needed.
+// // Execution of IIFE
+// let value = (function() {
+// 	return 2 * 10 + 15 + 'Pesho';
+// })(); // // Immediately invoking the function wiht () and saving the result in the variable 'value'
+// console.log(value); // // Value is NOT function and '()' are not needed.
 
 // // Another example of IIFE - returns directly the result
-(function() {
-	console.log('some app here');
-	console.log('some app here');
-})();
+// (function() {
+// 	console.log('some app here');
+// 	console.log('some app here');
+// })();
+
+
+// // CLOSURE
+function outerFunc() {
+	let outerVar = 'Pesho';
+
+	return function innerFunc() {
+		console.log(outerVar);
+	}
+}
+
+let returnedInnerFunction = outerFunc();
+// // outerVar is saved in the closure of the function, despite the edn of the execution of the outer function
+console.log(returnedInnerFunction());
