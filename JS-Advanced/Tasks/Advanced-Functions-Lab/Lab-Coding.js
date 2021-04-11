@@ -199,14 +199,26 @@
 
 
 // // CLOSURE
-function outerFunc() {
-	let outerVar = 'Pesho';
+// function outerFunc() {
+// 	let outerVar = 'Pesho';
+// 	return function innerFunc() {
+// 		console.log(outerVar);
+// 	}
+// }
 
-	return function innerFunc() {
-		console.log(outerVar);
-	}
+// let returnedInnerFunction = outerFunc();
+// // outerVar is saved in the closure of the function, despite the edn of the execution of the outer function
+// console.log(returnedInnerFunction());
+
+function solution() {
+	return function () {
+		let result = "";
+		return {
+			append: (text) => result += text,
+			removeStart: (num) => result = result.slice(Number(num)),
+			removeEnd: (num) => result = result.slice(0, result.length - Number(num)),
+			print: () => console.log(result)
+		}
+	}(); // return the requested function
 }
 
-let returnedInnerFunction = outerFunc();
-// // outerVar is saved in the closure of the function, despite the edn of the execution of the outer function
-console.log(returnedInnerFunction());
