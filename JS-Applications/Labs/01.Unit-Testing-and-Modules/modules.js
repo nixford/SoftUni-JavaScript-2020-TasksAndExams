@@ -1,1 +1,4 @@
-console.log('Hello from console');
+function printMessage () {
+    console.log('Hello from console - function');
+}
+
