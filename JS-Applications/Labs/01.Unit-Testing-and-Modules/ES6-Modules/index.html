@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./modulesES6.js"></script> <!-- in order to be wrapped in one module we have to use type="module" -->
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hellow world!</h1>
+
+    <script type="module"> // in order to use the module's exports we have to use type="module"
+        import modulesES6 from './modulesES6.js';
+
+        modulesES6.printMessage('execute');
+        console.log(modulesES6.name);
+    </script>
+    
+</body>
+</html>
