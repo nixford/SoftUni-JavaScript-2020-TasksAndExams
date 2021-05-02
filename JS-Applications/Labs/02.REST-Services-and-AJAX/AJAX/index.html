@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Star Wars Characters</h1>
-
+    <p class="characters"></p>
+    <button id="load">Get Characters</button>
     <script>
         const url = `https://swapi.dev/api/people/4/`;
 
@@ -20,11 +21,19 @@
         
         // Add listener, because we need actions to be executed when response is received
         httpRequest.addEventListener('loadend', function() { // The loadend event is fired when a request has completed, whether successfully (after load) or unsuccessfully (after abort or error).
-            console.log(this);
+            let character = JSON.parse(this.responseText);
+
+            console.log(character);
+            const charactersElement = document.querySelector('.characters');
+
+            charactersElement.innerHTML = `<li>${character.name}</li>`;
         });
 
         httpRequest.open('GET', url);
-        httpRequest.send();
+
+        document.getElementById('load').addEventListener('click', () => {
+            httpRequest.send();
+        });        
 
     </script>
 </body>
