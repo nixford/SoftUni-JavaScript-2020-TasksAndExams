@@ -11,7 +11,7 @@
     <p class="characters"></p>
     <button id="load">Get Characters</button>
     <script>
-        const url = `https://swapi.dev/api/people/4/`;
+        const url = `https://swapi.dev/api/people/`;
 
         // XMLHttpRequest (XHR) objects are used to interact with servers. 
         // You can retrieve data from a URL without having to do a full page refresh. 
@@ -21,17 +21,19 @@
         
         // Add listener, because we need actions to be executed when response is received
         httpRequest.addEventListener('loadend', function() { // The loadend event is fired when a request has completed, whether successfully (after load) or unsuccessfully (after abort or error).
-            let character = JSON.parse(this.responseText);
+            let response = JSON.parse(this.responseText);
+            let characters = response.results;
 
-            console.log(character);
             const charactersElement = document.querySelector('.characters');
 
-            charactersElement.innerHTML = `<li>${character.name}</li>`;
+            charactersElement.innerHTML = characters.map(x => `<li>${x.name}</li>`).join('');
         });
 
+        // Open request
         httpRequest.open('GET', url);
 
         document.getElementById('load').addEventListener('click', () => {
+            // Send request
             httpRequest.send();
         });        
 

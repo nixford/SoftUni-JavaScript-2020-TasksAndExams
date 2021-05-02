@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Characters</title>
+</head>
+<body>
+    <h1>Star Wars Characters</h1>
+    <p class="characters"></p>
+    <button id="load">Get Characters</button>
+    <script>
+        const url = `https://swapi.dev/api/people/`;
+
+        // XMLHttpRequest (XHR) objects are used to interact with servers. 
+        // You can retrieve data from a URL without having to do a full page refresh. 
+        // This enables a Web page to update just part of a page without disrupting what the user is doing. 
+        // XMLHttpRequest is used heavily in AJAX programming.
+        const httpRequest = new XMLHttpRequest(); 
+        
+        // Add listener, because we need actions to be executed when response is received
+        httpRequest.addEventListener('loadend', function() { // The loadend event is fired when a request has completed, whether successfully (after load) or unsuccessfully (after abort or error).
+            let response = JSON.parse(this.responseText);
+            let characters = response.results;
+
+            const charactersElement = document.querySelector('.characters');
+
+            charactersElement.innerHTML = characters.map(x => `<li>${x.name}</li>`).join('');
+        });
+
+        // Open request
+        httpRequest.open('GET', url);
+
+        document.getElementById('load').addEventListener('click', () => {
+            // Send request
+            httpRequest.send();
+        });        
+
+    </script>
+</body>
+</html>
