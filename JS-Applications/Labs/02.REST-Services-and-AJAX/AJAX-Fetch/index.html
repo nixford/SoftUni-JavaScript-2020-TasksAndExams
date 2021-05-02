@@ -13,28 +13,21 @@
     <script>
         const url = `https://swapi.dev/api/people/`;
 
-        // XMLHttpRequest (XHR) objects are used to interact with servers. 
-        // You can retrieve data from a URL without having to do a full page refresh. 
-        // This enables a Web page to update just part of a page without disrupting what the user is doing. 
-        // XMLHttpRequest is used heavily in AJAX programming.
-        const httpRequest = new XMLHttpRequest(); 
-        
-        // Add listener, because we need actions to be executed when response is received
-        httpRequest.addEventListener('loadend', function() { // The loadend event is fired when a request has completed, whether successfully (after load) or unsuccessfully (after abort or error).
-            let response = JSON.parse(this.responseText);
-            let characters = response.results;
-
-            const charactersElement = document.querySelector('.characters');
-
-            charactersElement.innerHTML = characters.map(x => `<li>${x.name}</li>`).join('');
-        });
-
-        // Open request
-        httpRequest.open('GET', url);
+        // fetch(url)
+        //     .then(function(response) { 
+        //         return response.json();
+        // }).then(function (data) {
+        // });
 
         document.getElementById('load').addEventListener('click', () => {
-            // Send request
-            httpRequest.send();
+            fetch(url) // IF we want POST - after url we add {method:'post'}
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                let characters = data.results;
+                const charactersElement = document.querySelector('.characters');
+                charactersElement.innerHTML = characters.map(x => `<li>${x.name}</li>`).join(''); 
+            });
         });        
 
     </script>
