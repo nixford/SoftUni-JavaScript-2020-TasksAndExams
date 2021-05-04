@@ -21,22 +21,22 @@
             })
 
         // Request with Async function
-        // async function getSwName(id) {
-        //     let response = await fetch(`https://swapi.dev/api/people/${id}`);
-        //     let character = await response.json();
+        async function getSwName(id) {
+            let response = await fetch(`https://swapi.dev/api/people/${id}`);
+            let character = await response.json();
 
-        //     let starshipResponse = await fetch(character.starships[0]);
-        //     let starship = await starshipResponse.json();
+            let starshipResponse = await fetch(character.starships[0]);
+            let starship = await starshipResponse.json();
 
-        //     return `${character.name} - ${starship.name}`;
-        // }
+            return `${character.name} - ${starship.name}`;
+        }
 
-        // getSwName(1)
-        //     .then(name => console.log(name))
-        //     .catch(err => {
-        //         console.log('in catch');
-        //         console.log(err)
-        //     });
+        getSwName(1)
+            .then(name => console.log(name))
+            .catch(err => {
+                console.log('in catch');
+                console.log(err)
+            });
 
     </script>
 </body>
