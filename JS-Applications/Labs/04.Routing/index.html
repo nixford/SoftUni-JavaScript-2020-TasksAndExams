@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Hash-based Routing - used for scrolling the page to sellected location without reloading -->
+    <h1>Hello World</h1>
+
+    <div id="root"></div>
+
+    <!-- Changing hash with HTML -->
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+
+    <button id="change-hash">change</button>
+
+    <!-- Changing hash with JS -->
+    <script>
+        // Example for router
+        const rootelement = document.getElementById('root');
+
+        const router = {
+            '#home': `<h2>Home Page</h2>`,
+            '#about': `<h2>About us something</h2>`,
+            '#contact': `<h2>Our contacts</h2>`,
+            '#changed': `<h2>Dynamic header</h2>`,
+        }
+
+        // the hash property is in window.location object
+        console.log(window.location.hash);
+
+        rootelement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
+
+        // Processing hashc - hange events in JS with "hashchange"
+        window.addEventListener('hashchange', e => {
+          rootelement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
+          console.log(e);  
+          console.log(location.hash);
+        });
+
+        document.getElementById('change-hash').addEventListener('click', () => {
+            location.hash = 'changed';
+        });
+    </script>
+</body>
+</html>
