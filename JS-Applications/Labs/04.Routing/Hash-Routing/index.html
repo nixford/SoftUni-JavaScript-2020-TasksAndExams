@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- Hash-based Routing - used for scrolling the page to sellected location without reloading -->
+    <!-- Hash-based Routing - old way - used for scrolling the page to sellected location without reloading -->
     <h1>Hello World</h1>
 
     <div id="root"></div>
@@ -28,7 +28,7 @@
             '#home': `<h2>Home Page</h2>`,
             '#about': `<h2>About us something</h2>`,
             '#contact': `<h2>Our contacts</h2>`,
-            '#changed': `<h2>Dynamic header</h2>`,
+            '#changed': renderChanged(),
         }
 
         // the hash property is in window.location object
@@ -36,7 +36,7 @@
 
         rootelement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
 
-        // Processing hashc - hange events in JS with "hashchange"
+        // Processing hash - change events in JS with "hashchange"
         window.addEventListener('hashchange', e => {
           rootelement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
           console.log(e);  
@@ -46,6 +46,10 @@
         document.getElementById('change-hash').addEventListener('click', () => {
             location.hash = 'changed';
         });
+
+        function renderChanged() {            
+            return `<h2>Dynamic header</h2>`;
+        }
     </script>
 </body>
 </html>
