@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <div id="root"></div>
+
+    <a href="#" onclick="navigate(event, '/home')">home</a>
+    <a href="#" onclick="navigate(event, '/about')">about</a>
+    <a href="#" onclick="navigate(event, '/location')">location</a>
+
+    <script>
+        const rootElement = document.getElementById('root');
+        const router = {
+            '/home': (name) => `<h2>${name}</h2>`,
+            '/about': `<h2>About us something</h2>`,
+            '/location': `<h2>Our location</h2>`,
+        };
+
+        async function fetchNames(id) {
+            let result = await fetch(`https://swapi.dev/api/people/${id}/`);
+            let character = await result.json();
+
+            return character.name;
+        }
+
+        window.addEventListener('popstate', e => {
+            console.log('popstate');
+
+            fetchNames(4)
+                .then(name => {
+                    rootElement.innerHTML = router[location.pathname](name) || `<h2>Not found</h2>`;
+                });            
+        }, false);
+
+        function navigate(e, url) {
+            e.preventDefault(); // Removes the # symbol from URL
+
+            history.pushState({}, '', url);
+
+            let event = new CustomEvent('popstate', {
+                state: {},
+                title: '',
+                url, 
+            });
+
+            window.dispatchEvent(event);
+
+            rootElement.innerHTML = router[location.pathname] || `<h2>Not found</h2>`;
+        }
+    </script>
+</body>
+</html>

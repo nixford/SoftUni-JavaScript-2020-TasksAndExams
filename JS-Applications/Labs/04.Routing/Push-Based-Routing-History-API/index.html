@@ -17,15 +17,20 @@
         // SPA pages can return <- (back) or -> (forth) using History API
         console.log(window.history);
 
-        document.getElementById('change').addEventListener('click', e => {
-            // window.history.pushState({username: 'Pesho'}, '', 'profile'); // or only history.pushState();
+        // The Popstate Event - Dispatched to the window every time the active history entry changes
+        window.addEventListener('popstate', e => {
+            console.log(history.state); // Provides history.back(), history.forward(), history.go()
+        });
 
+        // The ReplaceState() Method - Modifies the current history entry instead of creating a new one
+
+        document.getElementById('change').addEventListener('click', e => {
+            // The PushState() Method - Adds new object to the history of the browser
+            // window.history.pushState({username: 'Pesho'}, '', 'profile'); // or only history.pushState();
             history.pushState({number: history.length}, '', `page-${history.length}`);
 
             console.log(history.state);
-        });
-
-
+        });      
 
     </script>
 </body>

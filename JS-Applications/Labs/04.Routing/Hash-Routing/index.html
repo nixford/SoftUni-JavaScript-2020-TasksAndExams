@@ -15,30 +15,30 @@
     <!-- Changing hash with HTML -->
     <a href="#home">home</a>
     <a href="#about">about</a>
-    <a href="#contact">contact</a>
+    <a href="#location">location</a>
 
     <button id="change-hash">change</button>
 
     <!-- Changing hash with JS -->
     <script>
         // Example for router
-        const rootelement = document.getElementById('root');
+        const rootElement = document.getElementById('root');
 
         const router = {
             '#home': `<h2>Home Page</h2>`,
             '#about': `<h2>About us something</h2>`,
-            '#contact': `<h2>Our contacts</h2>`,
+            '#location': `<h2>Our location</h2>`,
             '#changed': renderChanged(),
         }
 
         // the hash property is in window.location object
         console.log(window.location.hash);
 
-        rootelement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
+        rootElement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
 
         // Processing hash - change events in JS with "hashchange"
         window.addEventListener('hashchange', e => {
-          rootelement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
+          rootElement.innerHTML = router[location.hash] || `<h2>Not found</h2>`;
           console.log(e);  
           console.log(location.hash);
         });
