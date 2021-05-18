@@ -11,24 +11,27 @@
     
     <!-- Importing handlebars -->
     <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="script.js" defer></script> 
+    <!-- With defer key word the browser loads firt the dom three, and after that the sript -->
 </head>
 
 <body>
   <div class="container" id="container">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
       <a class="navbar-brand text-light" href="#">Movies</a>
-      <ul class="navbar-nav ml-auto ">
+      <ul class="navbar-nav ml-auto navigation">
         <li class="nav-item">
           <a class="nav-link">Welcome, email</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" href="/logout">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="register">Register</a>
         </li>
       </ul>
     </nav>
@@ -210,7 +213,7 @@
     "start": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   }, -->
-  <!-- 4) The server can be started with npm start -->
+  <!-- 4) The server can be started with npm start (lite-server automatically host the project by using index.html) -->
 
 
   <!-- TEMPLATE THE PROVIDED PROJECT HTML WITH HANDLEBARS -->
