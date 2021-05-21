@@ -1,5 +1,6 @@
 const routes = {
-    'login': 'login-form-template'
+    'login': 'login-form-template',
+    'register': 'register-form-template',
 }
 
 const router = (path) => {
