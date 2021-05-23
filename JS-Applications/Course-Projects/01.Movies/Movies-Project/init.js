@@ -22,9 +22,8 @@ function onLoginSubmit(e) {
     console.log(document.forms['login-form']);
     let formData = new FormData(document.forms['login-form']);
 
-    console.log(formData.get('email')); // Takes the value of element with name email
-    console.log(formData.get('password'));
-
+    let email = formData.get('email'); // Takes the value of element with name email
+    let password = formData.get('password');
 }
 
 addEventListeners();
