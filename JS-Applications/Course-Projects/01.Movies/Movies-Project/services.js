@@ -13,6 +13,11 @@ const authService = {
       })
     })
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => {
+      // We have to save idToken in order to have auhorized requests to the server (in order not to login every time)
+      // therefore we save them locally with localStorage
+      localStorage.setItem('auth', JSON.stringify(data)); 
+      // In localStorage we cannot save objects - thr must be serializt with JSON.stringify(data)
+    })
   }
 }
