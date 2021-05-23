@@ -24,6 +24,8 @@ function onLoginSubmit(e) {
 
     let email = formData.get('email'); // Takes the value of element with name email
     let password = formData.get('password');
+
+    authService.login(email, password);
 }
 
 addEventListeners();
