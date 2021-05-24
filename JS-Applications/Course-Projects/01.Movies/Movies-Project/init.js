@@ -9,11 +9,9 @@ function navigateHandler(e) {
         return;
     }
 
-    let url = new URL(e.target.href);
+    let url = new URL(e.target.href);   
 
-    history.pushState({}, '', url.pathname);
-
-    router(url.pathname.slice(1));
+    navigate(url.pathname.slice(1));
 }
 
 function onLoginSubmit(e) {
@@ -25,7 +23,10 @@ function onLoginSubmit(e) {
     let email = formData.get('email'); // Takes the value of element with name email
     let password = formData.get('password');
 
-    authService.login(email, password);
+    authService.login(email, password)
+        .then(data => {
+            navigate('home');
+        });
 }
 
 addEventListeners();
