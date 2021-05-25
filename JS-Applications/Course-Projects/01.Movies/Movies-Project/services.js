@@ -22,19 +22,19 @@ const authService = {
 
     return data;
   },
-  getData() {
-    let item = localStorage.getItem('auth');
+  // getData() {
+  //   let item = localStorage.getItem('auth');
 
-    if (typeof item !== undefined) {
-      return 'No data received';
-    } else {
-      let data = JSON.parse(item);    
-      return {
-        isAuthenticated: Boolean(data.idToken),
-        email: data.email || ''
-      };
-    }   
-  }
+  //   if (typeof item !== undefined) {
+  //     return 'No data received';
+  //   } else {
+  //     let data = JSON.parse(item);    
+  //     return {
+  //       isAuthenticated: Boolean(data.idToken),
+  //       email: data.email || ''
+  //     };
+  //   }   
+  // }
 };
 
 // NOT ASYNC FUNCTION
