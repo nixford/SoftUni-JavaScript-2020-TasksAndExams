@@ -14,12 +14,10 @@ const authService = {
       })
     });
 
-    let data = await respose.json;
-
-    console.log(data)
+    let data = await respose.json();
     // We have to save idToken in order to have auhorized requests to the server (in order not to login every time)
     // therefore we save them locally with localStorage
-    localStorage.setItem('auth', JSON.stringify(data));
+    localStorage.setItem('auth', JSON.stringify(data)); 
     // In localStorage we cannot save objects - thr must be serializt with JSON.stringify(data)
 
     return data;
@@ -28,9 +26,12 @@ const authService = {
     let data = JSON.parse(localStorage.getItem('auth'));
 
     return {
-      isAuthenticated: Boolean(data.idToken),
-      email: data.email || ''
-    };
+        isAuthenticated: Boolean(data.idToken),
+        email: data.email || ''
+      };
+  },
+  logout() {
+    localStorage.setItem('auth', '');
   }
 };
 
@@ -49,10 +50,11 @@ const authService = {
 //     })
 //     .then(res => res.json())
 //     .then(data => {
-
-//       console.log(data)
 //       // We have to save idToken in order to have auhorized requests to the server (in order not to login every time)
 //       // therefore we save them locally with localStorage
+
+//       console.log(`DEBUG service.js: data: ${JSON.stringify(data)}`);
+
 //       localStorage.setItem('auth', JSON.stringify(data)); 
 //       // In localStorage we cannot save objects - thr must be serializt with JSON.stringify(data)
 //     })
