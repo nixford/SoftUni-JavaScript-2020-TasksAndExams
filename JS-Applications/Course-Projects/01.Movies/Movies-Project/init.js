@@ -22,6 +22,7 @@ function onLoginSubmit(e) {
     e.preventDefault();
 
     console.log(document.forms['login-form']);
+    
     let formData = new FormData(document.forms['login-form']);
 
     let email = formData.get('email'); // Takes the value of element with name email

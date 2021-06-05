@@ -6,7 +6,7 @@ const authService = {
     let respose = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
+        'content-type': 'application/json'
       },
       body: JSON.stringify({ // wrap/serialize the object with JSON.stringify
         email,
@@ -15,26 +15,23 @@ const authService = {
     });
 
     let data = await respose.json;
+
+    console.log(data)
     // We have to save idToken in order to have auhorized requests to the server (in order not to login every time)
     // therefore we save them locally with localStorage
-    localStorage.setItem('auth', JSON.stringify(data)); 
+    localStorage.setItem('auth', JSON.stringify(data));
     // In localStorage we cannot save objects - thr must be serializt with JSON.stringify(data)
 
     return data;
   },
-  // getData() {
-  //   let item = localStorage.getItem('auth');
+  getData() {
+    let data = JSON.parse(localStorage.getItem('auth'));
 
-  //   if (typeof item !== undefined) {
-  //     return 'No data received';
-  //   } else {
-  //     let data = JSON.parse(item);    
-  //     return {
-  //       isAuthenticated: Boolean(data.idToken),
-  //       email: data.email || ''
-  //     };
-  //   }   
-  // }
+    return {
+      isAuthenticated: Boolean(data.idToken),
+      email: data.email || ''
+    };
+  }
 };
 
 // NOT ASYNC FUNCTION
@@ -52,6 +49,8 @@ const authService = {
 //     })
 //     .then(res => res.json())
 //     .then(data => {
+
+//       console.log(data)
 //       // We have to save idToken in order to have auhorized requests to the server (in order not to login every time)
 //       // therefore we save them locally with localStorage
 //       localStorage.setItem('auth', JSON.stringify(data)); 
