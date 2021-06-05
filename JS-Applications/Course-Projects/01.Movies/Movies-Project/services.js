@@ -3,6 +3,7 @@ const apiKey = 'AIzaSyDuIoJstS-cz6VnpUD6PT0-Q6uhxij9MSc';
 // ASYNC FUNCTION
 const authService = {
   async login(email, password) {
+    console.log(`DEBUG service.js: email: ${email} password: ${password}`);
     let respose = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
       method: 'POST',
       headers: {
@@ -24,9 +25,6 @@ const authService = {
   },
 
   async register(email, password) {
-
-    console.log(`DEBUG service.js: email: ${email} password: ${password}`);
-
     let respose = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
       method: 'POST',
       headers: {

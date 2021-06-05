@@ -41,13 +41,10 @@ function onRegisterSubmit(e) {
 
   let email = formData.get('email'); // Takes the value of element with name email
   let password = formData.get('password');
-  let epeatPassword = formData.get('repeatPassword');
-
-  if (formData.get('repeatPassword')) {
-    repeatPassword = formData.get('repeatPassword');
-    if (password !== repeatPassword) {
-      throw new Error('Your password and confirmation password do not match!');
-    }
+  let repeatPassword = formData.get('repeatPassword');
+  
+  if (password !== repeatPassword) {
+    throw new Error('Your password and confirmation password do not match!');
   }
 
   authService.register(email, password)
