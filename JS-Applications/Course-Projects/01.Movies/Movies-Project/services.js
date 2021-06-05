@@ -23,12 +23,19 @@ const authService = {
     return data;
   },
   getData() {
-    let data = JSON.parse(localStorage.getItem('auth'));
+    try {
+      let data = JSON.parse(localStorage.getItem('auth'));
 
-    return {
-        isAuthenticated: Boolean(data.idToken),
-        email: data.email || ''
+      return {
+          isAuthenticated: Boolean(data.idToken),
+          email: data.email || ''
       };
+    } catch (error) {
+      return {
+        isAuthenticated: false,
+        email: ''
+    };
+    }
   },
   logout() {
     localStorage.setItem('auth', '');
