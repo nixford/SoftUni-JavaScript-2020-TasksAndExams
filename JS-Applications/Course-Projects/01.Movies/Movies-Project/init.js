@@ -42,7 +42,7 @@ function onRegisterSubmit(e) {
   let email = formData.get('email'); // Takes the value of element with name email
   let password = formData.get('password');
   let repeatPassword = formData.get('repeatPassword');
-  
+
   if (password !== repeatPassword) {
     throw new Error('Your password and confirmation password do not match!');
   }
@@ -51,6 +51,15 @@ function onRegisterSubmit(e) {
     .then(data => {
       navigate('home');
     });
+}
+
+function onAddMovieSubmit(e) {
+  e.preventDefault();
+
+  let formData = new FormData(document.forms['add-movie-form']);
+  let title = formData.get('title');
+  let description = formData.get('description');
+  let imageUrl = formData.get('imageUrl');
 }
 
 addEventListeners();

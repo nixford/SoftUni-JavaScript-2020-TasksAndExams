@@ -2,6 +2,7 @@ const routes = {
     'home': 'home-template',
     'login': 'login-form-template',
     'register': 'register-form-template',
+    'add-movie': 'add-movie-template',
 }
 
 const router = (path) => {

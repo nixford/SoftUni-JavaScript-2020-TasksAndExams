@@ -1,5 +1,15 @@
 const apiKey = 'AIzaSyDuIoJstS-cz6VnpUD6PT0-Q6uhxij9MSc';
 
+const request = async (url, method) => {
+  let response = await fetch (url, {
+    method,
+  });
+
+  let data = await response.json();
+
+  return data;
+}
+
 // ASYNC FUNCTION
 const authService = {
   async login(email, password) {
@@ -89,3 +99,7 @@ const authService = {
 //     })
 //   }
 // }
+
+const movieService = {
+
+}
