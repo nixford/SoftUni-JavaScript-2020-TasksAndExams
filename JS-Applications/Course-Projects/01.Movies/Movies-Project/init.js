@@ -60,6 +60,8 @@ function onAddMovieSubmit(e) {
   let title = formData.get('title');
   let description = formData.get('description');
   let imageUrl = formData.get('imageUrl');
+
+  
 }
 
 addEventListeners();
