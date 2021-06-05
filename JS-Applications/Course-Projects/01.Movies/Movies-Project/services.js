@@ -11,9 +11,9 @@ const authService = {
       body: JSON.stringify({ // wrap/serialize the object with JSON.stringify
         email,
         password,
+        returnSecureToken: true,
       })
     });
-
     let data = await respose.json();
     // We have to save idToken in order to have auhorized requests to the server (in order not to login every time)
     // therefore we save them locally with localStorage
@@ -22,21 +22,45 @@ const authService = {
 
     return data;
   },
+
+  async register(email, password) {
+
+    console.log(`DEBUG service.js: email: ${email} password: ${password}`);
+
+    let respose = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({ // wrap/serialize the object with JSON.stringify
+        email,
+        password,
+        returnSecureToken: true,
+      })
+    });
+    let data = await respose.json();
+    localStorage.setItem('auth', JSON.stringify(data)); 
+    return data;
+  },
+
   getData() {
     try {
-      let data = JSON.parse(localStorage.getItem('auth'));
 
+      let data = JSON.parse(localStorage.getItem('auth'));
       return {
           isAuthenticated: Boolean(data.idToken),
           email: data.email || ''
       };
+
     } catch (error) {
+
       return {
         isAuthenticated: false,
         email: ''
     };
     }
   },
+  
   logout() {
     localStorage.setItem('auth', '');
   }

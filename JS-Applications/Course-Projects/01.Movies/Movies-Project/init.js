@@ -1,36 +1,59 @@
 function addEventListeners() {
-    let navigationTemplate = Handlebars.compile(document.getElementById('navigation-template').innerHTML);
+  let navigationTemplate = Handlebars.compile(document.getElementById('navigation-template').innerHTML);
 
-    Handlebars.registerPartial('navigation-template', navigationTemplate);
+  Handlebars.registerPartial('navigation-template', navigationTemplate);
 
-    navigate('home');
+  navigate('home');
 }
 
 function navigateHandler(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!e.target.classList.contains('nav-link')) {
-        return;
-    }
+  if (!e.target.classList.contains('nav-link')) {
+    return;
+  }
 
-    let url = new URL(e.target.href);   
+  let url = new URL(e.target.href);
 
-    navigate(url.pathname.slice(1));
+  navigate(url.pathname.slice(1));
 }
 
 function onLoginSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    console.log(document.forms['login-form']);
-    let formData = new FormData(document.forms['login-form']);
+  console.log(document.forms['login-form']);
+  let formData = new FormData(document.forms['login-form']);
 
-    let email = formData.get('email'); // Takes the value of element with name email
-    let password = formData.get('password');
+  let email = formData.get('email'); // Takes the value of element with name email
+  let password = formData.get('password');
 
-    authService.login(email, password)
-        .then(data => {
-            navigate('home');
-        });
+  authService.login(email, password)
+    .then(data => {
+      navigate('home');
+    });
+}
+
+function onRegisterSubmit(e) {
+  e.preventDefault();
+
+  console.log(document.forms['register-form']);
+  let formData = new FormData(document.forms['register-form']);
+
+  let email = formData.get('email'); // Takes the value of element with name email
+  let password = formData.get('password');
+  let epeatPassword = formData.get('repeatPassword');
+
+  if (formData.get('repeatPassword')) {
+    repeatPassword = formData.get('repeatPassword');
+    if (password !== repeatPassword) {
+      throw new Error('Your password and confirmation password do not match!');
+    }
+  }
+
+  authService.register(email, password)
+    .then(data => {
+      navigate('home');
+    });
 }
 
 addEventListeners();
