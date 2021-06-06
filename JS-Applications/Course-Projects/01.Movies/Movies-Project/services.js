@@ -1,8 +1,13 @@
 const apiKey = 'AIzaSyDuIoJstS-cz6VnpUD6PT0-Q6uhxij9MSc';
+const databaseUrl = `https://movies-60361-default-rtdb.europe-west1.firebasedatabase.app`;
 
-const request = async (url, method) => {
+const request = async (url, method, body) => {
   let response = await fetch (url, {
     method,
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(body)
   });
 
   let data = await response.json();
@@ -13,7 +18,6 @@ const request = async (url, method) => {
 // ASYNC FUNCTION
 const authService = {
   async login(email, password) {
-    console.log(`DEBUG service.js: email: ${email} password: ${password}`);
     let respose = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
       method: 'POST',
       headers: {
@@ -101,5 +105,9 @@ const authService = {
 // }
 
 const movieService = {
-  
+  async add(movieData) {
+    let res = await request(`${databaseUrl}/movies.json`, 'POST', movieData);
+
+    return res;
+  }
 }

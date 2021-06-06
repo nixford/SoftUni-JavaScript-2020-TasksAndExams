@@ -61,7 +61,13 @@ function onAddMovieSubmit(e) {
   let description = formData.get('description');
   let imageUrl = formData.get('imageUrl');
 
-  
+  movieService.add({
+    title,
+    description,
+    imageUrl,
+  }).then(res => {
+    navigate('home');
+  })
 }
 
 addEventListeners();
