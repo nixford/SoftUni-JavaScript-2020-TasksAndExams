@@ -2,13 +2,20 @@ const apiKey = 'AIzaSyDuIoJstS-cz6VnpUD6PT0-Q6uhxij9MSc';
 const databaseUrl = `https://movies-60361-default-rtdb.europe-west1.firebasedatabase.app`;
 
 const request = async (url, method, body) => {
-  let response = await fetch (url, {
-    method,
+   let options = {
+    method,      
+  };
+
+  if (body) {
+    Object.assign(options, {
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify(body)
-  });
+    });
+  }
+
+  let response = await fetch(url, options);
 
   let data = await response.json();
 
@@ -107,7 +114,11 @@ const authService = {
 const movieService = {
   async add(movieData) {
     let res = await request(`${databaseUrl}/movies.json`, 'POST', movieData);
+    return res;
+  },
 
+  async getAll() {
+    let res = await request(`${databaseUrl}/movies.json`, 'GET');
     return res;
   }
 }
