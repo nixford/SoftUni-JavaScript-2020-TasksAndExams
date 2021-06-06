@@ -5,13 +5,14 @@ function addEventListeners() {
   Handlebars.registerPartial('navigation-template', navigationTemplate);
   Handlebars.registerPartial('movie-card', movieCardTemplate);
 
+  // navigate(location.pathname == '/' ? 'home' : location.pathname.slice(1));
   navigate('home');
 }
 
 function navigateHandler(e) {
   e.preventDefault();
-
-  if (!e.target.classList.contains('nav-link')) {
+  // if (!e.target.classList.contains('nav-link')) {
+  if (e.target.tagName != 'A') {
     return;
   }
 
