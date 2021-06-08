@@ -1,0 +1,14 @@
+import { html, render } from './node_modules/lit-html/lit-html.js';
+// import { html, render } from 'https://unpkg.com/lit-html?module';
+
+let headerTemplate = () => html `
+    <!-- Header -->
+    <header>
+      <h1><a class="home" href="#/home">SoftWiki</a></h1>
+      <nav class="nav-buttons">
+        <a href="#/create">Create</a>
+        <a href="#/logout">Logout</a>
+        <a href="#/register">Register</a>
+      </nav>
+    </header>
+`
