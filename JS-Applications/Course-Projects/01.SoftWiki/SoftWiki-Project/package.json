@@ -4,10 +4,11 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "lit-html": "^1.4.1",
+    "lit-html": "^1.4.1"
+  },
+  "devDependencies": {
     "lite-server": "^2.6.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "lite-server"
   },
