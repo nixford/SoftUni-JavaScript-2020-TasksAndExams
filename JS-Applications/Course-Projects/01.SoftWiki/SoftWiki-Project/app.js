@@ -11,4 +11,6 @@ let headerTemplate = () => html `
         <a href="#/register">Register</a>
       </nav>
     </header>
-`
+`;
+
+render(headerTemplate(), document.getElementById('app'));
