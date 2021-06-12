@@ -1,7 +1,7 @@
 import { html } from '../node_modules/lit-html/lit-html.js';
 // import { html, render } from 'https://unpkg.com/lit-html?module';
 
-export default () => html `
+export default () => html`
     <!-- Header -->
     <header>
       <h1><a class="home" href="#/home">SoftWiki</a></h1>
