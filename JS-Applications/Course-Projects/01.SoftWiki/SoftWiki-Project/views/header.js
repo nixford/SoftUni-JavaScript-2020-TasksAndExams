@@ -1,9 +1,11 @@
 import { html } from '../node_modules/lit-html/lit-html.js';
 // import { html, render } from 'https://unpkg.com/lit-html?module';
 
-export default () => html`
+export default ({
+  navigationHandler
+}) => html`
 <!-- Header -->
-<header>
+<header @click=${navigationHandler}>
   <h1><a class="home" href="/">SoftWiki</a></h1>
   <nav class="nav-buttons">
     <a href="/login">Login</a>

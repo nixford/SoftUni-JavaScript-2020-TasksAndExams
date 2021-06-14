@@ -17,12 +17,17 @@ const routes = [
 const router = (path) => {
   let route = routes.find(x => x.path == path);  
 
-  render(layout(route.template()), document.getElementById('app'));
+  render(layout(route.template(), { navigationHandler }), document.getElementById('app'));
 };
 
 function navigationHandler(e) {
   if (e.target.tagName == 'A') {
-    
+    e.preventDefault();
+    console.log(e.target.href);
+    let url = new URL(e.target.href);
+    console.log(url)
+
+    router(url.pathname);
   }
 }
 
