@@ -1,39 +1,5 @@
-import { html, render } from './node_modules/lit-html/lit-html.js';
-import layout from './views/layout.js';
-import home from '/views/home.js';
-import login from './views/login.js';
-import notFound from './views/not-found.js';
+import router from './router.js';
 
-const routes = [
-  {
-    path: '/',
-    template: home,
-  },
-  {
-    path: '/login',
-    template: login,
-  },
-  {
-    path: '/not-found',
-    template: notFound,
-  }
-];
-
-const router = (path) => {
-  let route = routes.find(x => x.path == path) || routes.find(x => x.path == '/not-found');  
-
-  render(layout(route.template(), { navigationHandler }), document.getElementById('app'));
-};
-
-function navigationHandler(e) {
-  if (e.target.tagName == 'A') {
-    e.preventDefault();
-    console.log(e.target.href);
-    let url = new URL(e.target.href);
-    console.log(url)
-
-    router(url.pathname);
-  }
-}
+const apiKey = "AIzaSyB9TDR4wQY0t7aY3yEcJVOQYV95JDkdat0";
 
 router(location.pathname);
