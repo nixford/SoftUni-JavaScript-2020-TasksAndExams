@@ -13,6 +13,9 @@ const routes = [
     {
         path: '/login',
         template: login,
+        context: {
+            
+        }
     },
     {
         path: '/not-found',

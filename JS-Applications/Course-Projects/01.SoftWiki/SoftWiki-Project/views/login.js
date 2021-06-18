@@ -1,6 +1,8 @@
 import { html } from '../node_modules/lit-html/lit-html.js';
 
-export default () => html`
+export default ({
+  onLoginSubmit
+}) => html`
   <!-- Login -->
   <div class="container auth">
       <form action="#" method="">
