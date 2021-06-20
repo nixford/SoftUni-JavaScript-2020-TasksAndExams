@@ -5,7 +5,7 @@ export default ({
 }) => html`
   <!-- Login -->
   <div class="container auth">
-      <form action="#" method="">
+      <form action="#" method="" @submit=${onLoginSubmit}>
         <fieldset>
           <legend>Login</legend>
           <blockquote>

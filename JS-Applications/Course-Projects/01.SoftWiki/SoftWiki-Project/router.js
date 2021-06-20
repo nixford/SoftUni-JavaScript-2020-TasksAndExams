@@ -1,5 +1,7 @@
 import { html, render } from './node_modules/lit-html/lit-html.js';
 
+import { onLoginSubmit } from './eventListeners.js';
+
 import layout from './views/layout.js';
 import home from '/views/home.js';
 import login from './views/login.js';
@@ -14,7 +16,7 @@ const routes = [
         path: '/login',
         template: login,
         context: {
-            
+            onLoginSubmit
         }
     },
     {
@@ -27,8 +29,9 @@ const router = (path) => {
     history.pushState({}, '', path)
 
     let route = routes.find(x => x.path == path) || routes.find(x => x.path == '/not-found');
+    let context = route.context;
 
-    render(layout(route.template(), { navigationHandler }), document.getElementById('app'));
+    render(layout(route.template(context), { navigationHandler }), document.getElementById('app'));
 };
 
 function navigationHandler(e) {
