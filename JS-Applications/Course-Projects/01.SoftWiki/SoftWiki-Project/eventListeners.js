@@ -8,5 +8,8 @@ export const onLoginSubmit = (e) => {
     let email = formData.get('email');
     let password = formData.get('password');
 
-    authService.login(email, password);
+    authService.login(email, password)
+        .then(data => {
+            console.log(`You are logged with ${data.email}`)
+        })
 }
