@@ -3,16 +3,18 @@ import request from "./request.js";
 const apiKey = "AIzaSyB9TDR4wQY0t7aY3yEcJVOQYV95JDkdat0";
 const baseUrl = 'https://softwiki-77f05-default-rtdb.europe-west1.firebasedatabase.app';
 
-let endpints = {
+let endpoints = {
     login: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`
 }
 
 export default {
     async login(email, password) {
-        let data = request.post(endpints.login, {
+        let data = request.post(endpoints.login, {
             email,
             password,
         });
+        
+        // console.log(email)
 
         localStorage.setItem('auth', JSON.stringify(data)); 
     
@@ -28,7 +30,7 @@ export default {
         body: JSON.stringify({ // wrap/serialize the object with JSON.stringify
           email,
           password,
-          returnSecureToken: true,
+          // returnSecureToken: true,
         })
       });
       let data = await respose.json();

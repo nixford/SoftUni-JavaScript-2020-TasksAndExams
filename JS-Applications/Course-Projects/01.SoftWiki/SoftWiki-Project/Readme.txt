@@ -11,3 +11,7 @@ HOSTING LOCALLY THE PROJECT
 INSTALLING LIT-HTML
     1) npm install --save lit-html
     2) install lit-html extension for better view of the templates 
+
+
+STARTTING THE SERVER
+    1) npm start
