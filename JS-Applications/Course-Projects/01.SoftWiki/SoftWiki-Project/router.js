@@ -6,6 +6,7 @@ import layout from './views/layout.js';
 import home from '/views/home.js';
 import login from './views/login.js';
 import notFound from './views/not-found.js';
+import register from './views/register.js';
 
 const routes = [
     {
@@ -15,6 +16,13 @@ const routes = [
     {
         path: '/login',
         template: login,
+        context: {
+            onLoginSubmit
+        }
+    },
+    {
+        path: '/register',
+        template: register,
         context: {
             onLoginSubmit
         }
