@@ -1,4 +1,5 @@
 import authService from "./services/authService.js";
+import router from './router.js'
 
 export const onLoginSubmit = (e) => {
     e.preventDefault();
@@ -18,10 +19,9 @@ export const onLoginSubmit = (e) => {
             .then(data => {
                 // console.log(data)
                 console.log(`You are logged with ${data.email}`)
+                localStorage.setItem('auth', JSON.stringify(data));
+                router('/');
             })
-            .catch((err) => {
-                console.log(err)
-            });
 
     } else {
         if (rePassword !== password) {
@@ -31,10 +31,9 @@ export const onLoginSubmit = (e) => {
 
         authService.register(email, password)
             .then((data) => {
-                console.log(`You are succsessfully registered with ${data.email}`);                
-            })
-            .catch((err) => {
-                console.log(err)
+                console.log(`You are succsessfully registered with ${data.email}`);    
+                localStorage.setItem('auth', JSON.stringify(data));     
+                router('/');       
             });
     }
 }

@@ -15,10 +15,7 @@ export default {
       password,
     });
 
-    // console.log(email)
-
-    localStorage.setItem('auth', JSON.stringify(data));
-
+    // console.log(email)   
     return data;
   },
 
@@ -28,7 +25,6 @@ export default {
       password,
     });
 
-    localStorage.setItem('auth', JSON.stringify(data));
     return data;
   },
 
