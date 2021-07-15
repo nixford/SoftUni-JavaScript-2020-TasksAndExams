@@ -2,13 +2,14 @@ import { html, render } from './node_modules/lit-html/lit-html.js';
 
 import authService from './services/authService.js';
 
-import { onLoginSubmit } from './eventListeners.js';
+import { onLoginSubmit, onCreateSubmit } from './eventListeners.js';
 
 import layout from './views/layout.js';
 import home from '/views/home.js';
 import login from './views/login.js';
 import notFound from './views/not-found.js';
 import register from './views/register.js';
+import createMovie from './views/create-movie.js';
 
 const routes = [
     {
@@ -48,6 +49,13 @@ const routes = [
     {
         path: '/not-found',
         template: notFound,
+    },
+    {
+        path: '/create',
+        template: createMovie,
+        context: {
+            onCreateSubmit,
+        }
     }
 ];
 

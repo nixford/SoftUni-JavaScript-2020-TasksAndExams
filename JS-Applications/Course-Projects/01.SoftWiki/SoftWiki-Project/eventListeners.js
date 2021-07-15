@@ -1,5 +1,25 @@
 import authService from "./services/authService.js";
+import articleService from './services/articleService.js';
 import router from './router.js'
+
+export const onCreateSubmit = (e) => {
+    e.preventDefault();
+
+    let formData = new FormData(e.target);
+
+    let title = formData.get('title');
+    let category = formData.get('category');
+    let content = formData.get('content');
+
+    articleService.create({
+        title,
+        category,
+        content,
+    })
+    .then(res => {
+        router('/')
+    })
+};
 
 export const onLoginSubmit = (e) => {
     e.preventDefault();

@@ -1,7 +1,6 @@
 import request from "./request.js";
 
 const apiKey = "AIzaSyB9TDR4wQY0t7aY3yEcJVOQYV95JDkdat0";
-const baseUrl = 'https://softwiki-77f05-default-rtdb.europe-west1.firebasedatabase.app';
 
 let endpoints = {
   login: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`,
@@ -33,7 +32,8 @@ export default {
       let data = JSON.parse(localStorage.getItem('auth'));
       return {
         isAuthenticated: Boolean(data.idToken),
-        email: data.email || ''
+        email: data.email || '',
+        idToken: data.idToken,
       };
 
     } catch (error) {
