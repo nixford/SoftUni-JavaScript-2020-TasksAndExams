@@ -8,7 +8,7 @@ export default ({
 }) => html`
 <!-- Header -->
 <header @click=${navigationHandler}>
-  <h1><a class="home" href="/">SoftWiki isAuthenticated - ${isAuthenticated}</a></h1>
+  <h1><a class="home" href="/">SoftWiki</a></h1>
   <nav class="nav-buttons">
     ${isAuthenticated ? html`
         <a href="/create">Create</a>

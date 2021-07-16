@@ -11,6 +11,7 @@ import login from './views/login.js';
 import notFound from './views/not-found.js';
 import register from './views/register.js';
 import createMovie from './views/create-movie.js';
+import movieDetails from './views/movie-details.JS'
 
 const routes = [
     {
@@ -58,24 +59,32 @@ const routes = [
         context: {
             onCreateSubmit,
         }
+    },
+    {
+        path: '/details/(?<id>\.+)',
+        template: movieDetails,
+        getData: articleService.getOne, // todo
     }
 ];
 
 const router = (path) => {
     history.pushState({}, '', path)
 
-    let route = routes.find(x => x.path == path) || routes.find(x => x.path == '/not-found');
+    // 'i' for case incencitive
+    let route = routes.find(x => new RegExp(`^${x.path}$`, 'i').test(path)) || routes.find(x => x.path == '/not-found');
     let context = route.context;
+
+    let params = new RegExp(`^${route.path}$`, 'i').exec(path).groups;
 
     let userData = authService.getData();
 
     if (route.getData) {
         route.getData().then(data => {
-            render(layout(route.template, { navigationHandler, onLoginSubmit, ...userData, ...context, data }), document.getElementById('app'));
+            render(layout(route.template, { navigationHandler, onLoginSubmit, ...userData, ...context, data, params }), document.getElementById('app'));
         })
     }
 
-    render(layout(route.template, { navigationHandler, onLoginSubmit, ...userData, ...context }), document.getElementById('app'));
+    render(layout(route.template, { navigationHandler, onLoginSubmit, ...userData, ...context, params }), document.getElementById('app'));
 };
 
 function navigationHandler(e) {
