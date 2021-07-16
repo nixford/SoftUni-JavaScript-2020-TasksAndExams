@@ -61,7 +61,7 @@ const routes = [
         }
     },
     {
-        path: '/details/(?<id>\.+)',
+        path: '/details/(?<id>\.+)', // example for regex path
         template: movieDetails,
         getData: articleService.getOne, // todo
     }
