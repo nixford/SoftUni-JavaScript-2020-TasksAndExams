@@ -8,6 +8,12 @@ const urlBuilder = (resource) => {
 }
 
 export default {
+    async getAll() {
+        let articles = await request.get(urlBuilder('articles'));
+
+        return Object.keys(articles).map(key => ({_id: key, ...articles[key]}));
+    },
+
     async create(article) {
         let res = request.post(urlBuilder('articles'), article);
 

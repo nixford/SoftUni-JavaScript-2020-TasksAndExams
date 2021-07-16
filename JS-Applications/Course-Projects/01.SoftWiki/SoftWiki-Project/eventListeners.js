@@ -25,11 +25,8 @@ export const onLoginSubmit = (e) => {
     e.preventDefault();
 
     let formData = new FormData(e.target);
-
     let email = formData.get('email');
-
     let password = formData.get('password');
-
     let rePassword = formData.get('rep-pass');
 
     // console.log(email)    

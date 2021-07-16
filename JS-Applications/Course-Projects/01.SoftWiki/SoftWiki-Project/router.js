@@ -1,6 +1,7 @@
 import { html, render } from './node_modules/lit-html/lit-html.js';
 
 import authService from './services/authService.js';
+import articleService from './services/articleService.js';
 
 import { onLoginSubmit, onCreateSubmit } from './eventListeners.js';
 
@@ -26,6 +27,7 @@ const routes = [
             history.pushState({}, '', url)
             return template(props);
         }, 
+        getData: articleService.getAll,
     },
     {
         path: '/login',
@@ -66,6 +68,12 @@ const router = (path) => {
     let context = route.context;
 
     let userData = authService.getData();
+
+    if (route.getData) {
+        route.getData().then(data => {
+            render(layout(route.template, { navigationHandler, onLoginSubmit, ...userData, ...context, data }), document.getElementById('app'));
+        })
+    }
 
     render(layout(route.template, { navigationHandler, onLoginSubmit, ...userData, ...context }), document.getElementById('app'));
 };
